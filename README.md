@@ -125,7 +125,9 @@ Other device functionality should be moved over from the legacy app by capabilit
 2. Lighting controls: static color, spectrum/cycle effects, brightness zones, and per-device effect constraints.
 3. State management: startup/refresh states, menu-bar device actions, and persistence.
 4. Keyboard and accessory controls: profile, layout, brightness, and device-specific feature gates.
-5. Packaging: signed and notarized native app with hardened runtime and clear macOS permission copy.
+5. Distribution packaging: signed and notarized native app with hardened runtime and clear macOS permission copy.
+
+Distribution packaging is release-only work. It is not a missing device-control feature, not a missing Launch at Login feature, and Packaging is not required for local development with `./script/build_and_run.sh`.
 
 Until a capability is connected through the native C bridge and verified against a real device, it should remain documented as legacy-supported rather than native-supported.
 
@@ -133,7 +135,7 @@ For the DeathAdder V3 Pro path, the next driver-level task is improving or repla
 
 ## Installation Notes
 
-Packaged, signed, and notarized native builds are not complete yet. For local development, run from source with `./script/build_and_run.sh`.
+Packaged, signed, and notarized native builds are not complete yet because they require release artifacts, signing identity, hardened runtime validation, and Apple notarization credentials. For local development, run from source with `./script/build_and_run.sh`.
 
 The legacy Electron packaging flow still supports ad-hoc signing:
 
