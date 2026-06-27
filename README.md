@@ -8,14 +8,21 @@ The current development focus is practical macOS support for newer Razer devices
 
 - Native SwiftUI/AppKit app shell in `NativeRazerMacOS`
 - macOS menu-bar resident app with a persistent status item
-- Native settings window with Launch at Login support through `ServiceManagement`
+- Native settings window with Launch at Login support through `ServiceManagement` and a System Settings Login Items shortcut
 - Native device controls for DPI and polling rate
 - Battery/status display when the bridge can read it from hardware
 - C bridge from Swift into `librazermacos`
 - Refreshed device catalog under `src/devices` with 267 device JSON profiles
 - Legacy Electron app retained as a reference implementation and fallback
 
-The native app currently targets:
+## Support Matrix
+
+There are two support layers in this repository:
+
+- Legacy Electron app keeps the broad device catalog from the original razer-macos/OpenRazer work. The `src/devices` directory currently contains 267 device JSON profiles, and the legacy UI still owns the historical color, brightness, state, keyboard, mouse, mouse mat, dock, eGPU, headphone, and laptop logic.
+- Native app verified hardware path is stricter. A device is listed here only when the SwiftUI/AppKit surface, C bridge, and macOS hardware behavior have been wired and tested. DeathAdder V3 Pro is the first verified native control target; this is not the full native support matrix and it does not mean the project supports only one mouse.
+
+Native verified control targets:
 
 | Device | Product ID | Native controls |
 | --- | --- | --- |
@@ -64,7 +71,7 @@ The native app keeps running after its main window is closed. Reopen it from the
 
 ## Legacy Electron App
 
-The original Electron app remains in the repository while the native app catches up feature by feature. It still provides the historical menu-bar UI, color effects, state management, and broader device coverage.
+The original Electron app remains in the repository while the native app catches up feature by feature. It still provides the historical menu-bar UI, color effects, state management, and broader device coverage. It is the compatibility reference for other device classes until the native app ports those controls and proves them on macOS.
 
 Install Node dependencies:
 
@@ -111,6 +118,16 @@ Long-term, the SwiftUI/AppKit app should become the primary macOS UI because it 
 ## Device Support Policy
 
 New-device support should be grounded in OpenRazer device definitions, then verified on real hardware whenever possible. For devices not physically available, the repo can import identifiers and capability metadata, but UI controls should stay conservative until a matching hardware path is tested.
+
+Other device functionality should be moved over from the legacy app by capability, not by copying every screen at once:
+
+1. Mouse controls: DPI, polling rate, battery, charging, and receiver/wired pairing paths.
+2. Lighting controls: static color, spectrum/cycle effects, brightness zones, and per-device effect constraints.
+3. State management: startup/refresh states, menu-bar device actions, and persistence.
+4. Keyboard and accessory controls: profile, layout, brightness, and device-specific feature gates.
+5. Packaging: signed and notarized native app with hardened runtime and clear macOS permission copy.
+
+Until a capability is connected through the native C bridge and verified against a real device, it should remain documented as legacy-supported rather than native-supported.
 
 For the DeathAdder V3 Pro path, the next driver-level task is improving or replacing the timed-out settings readback commands for DPI, polling rate, and battery state.
 

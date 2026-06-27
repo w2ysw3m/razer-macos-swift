@@ -45,6 +45,8 @@ final class NativeAppModel {
       - DPI and polling-rate controls through librazermacos
       - Hardware status with conservative timeout reporting
 
+      Legacy Electron support keeps the broader device catalog and historical color/state logic. The native app marks a device native-ready only after its controls are wired and tested on macOS hardware.
+
       Built on 1kc/razer-macos, librazermacos, and OpenRazer device work.
       """
     )

@@ -44,6 +44,8 @@ struct MenuBarStatusView: View {
 
     Divider()
 
+    SettingsLink()
+
     Button("About Razer macOS") {
       showAbout()
     }

@@ -9,14 +9,25 @@ struct SettingsView: View {
         LabeledContent("Runtime", value: "SwiftUI/AppKit")
         LabeledContent("Device bridge", value: "librazermacos")
         Toggle(
-          "Launch at login",
+          "Launch at Login",
           isOn: Binding(
             get: { launchAtLogin.isEnabled },
             set: { launchAtLogin.setEnabled($0) }
           )
         )
+        LabeledContent("Launch at Login status", value: launchAtLogin.statusDescription)
         LabeledContent("Status bar", value: "Always on")
         LabeledContent("Signing", value: "Planned")
+
+        Button("Open Login Items in System Settings") {
+          launchAtLogin.openLoginItemsSettings()
+        }
+
+        Text(
+          "Launch at Login is registered with macOS ServiceManagement. If the local unsigned build shows Requires approval or Unavailable, check System Settings > General > Login Items."
+        )
+        .font(.caption)
+        .foregroundStyle(.secondary)
 
         if !launchAtLogin.statusMessage.isEmpty {
           Text(launchAtLogin.statusMessage)
@@ -29,6 +40,6 @@ struct SettingsView: View {
         Label("General", systemImage: "gearshape")
       }
     }
-    .frame(width: 460, height: 240)
+    .frame(width: 520, height: 320)
   }
 }
