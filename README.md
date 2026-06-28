@@ -2,7 +2,7 @@
 
 [English](README.md) | [繁體中文](README.zh-Hant.md) | [简体中文](README.zh-Hans.md)
 
-Razer macOS is an open-source macOS control app for Razer peripherals. This fork is now moving away from the legacy Electron shell and toward a native SwiftUI/AppKit app backed by the existing `librazermacos` IOKit/HID driver code.
+Razer macOS is an independent open-source macOS control app for Razer peripherals. It is now a native SwiftUI/AppKit app backed by the existing `librazermacos` IOKit/HID driver code, with the legacy Electron implementation retained only as a compatibility reference.
 
 The current development focus is practical macOS support for newer Razer devices imported from OpenRazer, starting with the Razer DeathAdder V3 Pro.
 

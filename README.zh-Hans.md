@@ -2,7 +2,7 @@
 
 [English](README.md) | [繁體中文](README.zh-Hant.md) | [简体中文](README.zh-Hans.md)
 
-Razer macOS 是一个开源的 macOS Razer 外设控制 app。这个 fork 正在从 legacy Electron shell 迁移到原生 SwiftUI/AppKit app，底层继续使用现有的 `librazermacos` IOKit/HID 驱动代码。
+Razer macOS 是一个独立开源的 macOS Razer 外设控制 app。它现在以原生 SwiftUI/AppKit app 为主，底层继续使用现有的 `librazermacos` IOKit/HID 驱动代码，legacy Electron 实现仅作为兼容性参考保留。
 
 当前开发重点，是把 OpenRazer 导入的新设备数据真正落到 macOS 可用的控制路径上，第一个原生验证目标是 Razer DeathAdder V3 Pro。
 
