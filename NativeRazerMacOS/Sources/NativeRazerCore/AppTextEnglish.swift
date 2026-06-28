@@ -36,6 +36,7 @@ extension AppText {
     .connection: "Connection",
     .connectionLibrazermacosInternal: "librazermacos internal #%@",
     .connectionUSBReceiverWired: "USB receiver / wired",
+    .connectedDevices: "Connected devices",
     .controlsPreviewHardwareNotMatched: "Controls available in preview; hardware not matched.",
     .couldNotApplyAction: "Could not apply %@",
     .device: "Device",
@@ -70,7 +71,9 @@ extension AppText {
     .legacyProfileLoaded: "Legacy device profile loaded; hardware writes depend on native bridge support.",
     .liveMouseLoaded: "Live Razer devices loaded: %d",
     .noDeviceSelected: "No device selected",
+    .noConnectedDevices: "No connected Razer devices detected",
     .noRazerMouse: "No Razer device",
+    .noSupportedDisconnectedDevices: "No supported devices match",
     .openLoginItemsSettings: "Open Login Items in System Settings",
     .openRazerMacOS: "Open Razer macOS",
     .pollingRate: "Polling rate",
@@ -98,6 +101,7 @@ extension AppText {
     .statusRequiresApproval: "Requires approval",
     .statusUnavailable: "Unavailable",
     .statusUnknown: "Unknown",
+    .supportedDisconnectedDevices: "Supported but not connected",
     .targetLoadedNoLiveMouse: "Target devices loaded: %d; no live Razer device matched"
   ]
 }

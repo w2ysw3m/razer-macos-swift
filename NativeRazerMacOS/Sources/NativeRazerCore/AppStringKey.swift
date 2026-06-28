@@ -20,6 +20,7 @@ public enum AppStringKey: String, CaseIterable, Sendable {
   case connection
   case connectionLibrazermacosInternal
   case connectionUSBReceiverWired
+  case connectedDevices
   case controlsPreviewHardwareNotMatched
   case couldNotApplyAction
   case device
@@ -54,7 +55,9 @@ public enum AppStringKey: String, CaseIterable, Sendable {
   case legacyProfileLoaded
   case liveMouseLoaded
   case noDeviceSelected
+  case noConnectedDevices
   case noRazerMouse
+  case noSupportedDisconnectedDevices
   case openLoginItemsSettings
   case openRazerMacOS
   case pollingRate
@@ -82,5 +85,6 @@ public enum AppStringKey: String, CaseIterable, Sendable {
   case statusRequiresApproval
   case statusUnavailable
   case statusUnknown
+  case supportedDisconnectedDevices
   case targetLoadedNoLiveMouse
 }

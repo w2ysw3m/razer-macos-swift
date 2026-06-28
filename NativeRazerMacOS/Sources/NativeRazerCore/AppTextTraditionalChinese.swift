@@ -36,6 +36,7 @@ extension AppText {
     .connection: "連接",
     .connectionLibrazermacosInternal: "librazermacos 內部編號 #%@",
     .connectionUSBReceiverWired: "USB 接收器 / 有線",
+    .connectedDevices: "已連接裝置",
     .controlsPreviewHardwareNotMatched: "控制項可預覽；未匹配到硬件。",
     .couldNotApplyAction: "無法套用 %@",
     .device: "裝置",
@@ -70,7 +71,9 @@ extension AppText {
     .legacyProfileLoaded: "已載入舊版裝置設定；硬件寫入取決於原生橋接支援。",
     .liveMouseLoaded: "已載入即時 Razer 裝置：%d",
     .noDeviceSelected: "未選擇裝置",
+    .noConnectedDevices: "未偵測到已連接的 Razer 裝置",
     .noRazerMouse: "沒有 Razer 裝置",
+    .noSupportedDisconnectedDevices: "沒有匹配的支援裝置",
     .openLoginItemsSettings: "開啟系統設定中的登入項目",
     .openRazerMacOS: "開啟 Razer macOS",
     .pollingRate: "回報率",
@@ -98,6 +101,7 @@ extension AppText {
     .statusRequiresApproval: "需要批准",
     .statusUnavailable: "不可用",
     .statusUnknown: "未知",
+    .supportedDisconnectedDevices: "支援但未連接",
     .targetLoadedNoLiveMouse: "已載入目標裝置：%d；未匹配到即時 Razer 裝置"
   ]
 }

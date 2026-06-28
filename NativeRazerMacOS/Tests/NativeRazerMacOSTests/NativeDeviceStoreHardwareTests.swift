@@ -71,6 +71,66 @@ struct NativeDeviceStoreHardwareTests {
     #expect(updatedDevice.bridgeStatusMessage == .lightingPreviewOnly)
     #expect(store.lastRefreshSummary == .previewed(action: "Wave"))
   }
+
+  @Test func sidebarSections_whenDevicesAreMixed_splitsConnectedFromSupportedOnly() {
+    let connectedMouse = NativeDevice(
+      id: "connected-mouse",
+      name: "Razer DeathAdder V3 Pro",
+      productId: "0x00B7",
+      kind: .mouse,
+      connection: "librazermacos internal #0",
+      capabilities: [.discovery, .dpi],
+      bridgeStatus: "Connected",
+      hardwareInternalId: 0
+    )
+    let supportedKeyboard = NativeDevice(
+      id: "supported-keyboard",
+      name: "Razer Deathstalker Chroma",
+      productId: "0x0204",
+      kind: .keyboard,
+      connection: "USB / receiver",
+      capabilities: [.discovery, .lighting],
+      bridgeStatus: "Legacy profile"
+    )
+
+    let sections = DeviceSidebarSections(
+      devices: [supportedKeyboard, connectedMouse],
+      searchText: ""
+    )
+
+    #expect(sections.connectedDevices.map(\.id) == ["connected-mouse"])
+    #expect(sections.supportedDevices.map(\.id) == ["supported-keyboard"])
+  }
+
+  @Test func sidebarSections_whenSearching_filtersBothDeviceGroups() {
+    let connectedMouse = NativeDevice(
+      id: "connected-mouse",
+      name: "Razer DeathAdder V3 Pro",
+      productId: "0x00B7",
+      kind: .mouse,
+      connection: "librazermacos internal #0",
+      capabilities: [.discovery, .dpi],
+      bridgeStatus: "Connected",
+      hardwareInternalId: 0
+    )
+    let supportedKeyboard = NativeDevice(
+      id: "supported-keyboard",
+      name: "Razer Deathstalker Chroma",
+      productId: "0x0204",
+      kind: .keyboard,
+      connection: "USB / receiver",
+      capabilities: [.discovery, .lighting],
+      bridgeStatus: "Legacy profile"
+    )
+
+    let sections = DeviceSidebarSections(
+      devices: [connectedMouse, supportedKeyboard],
+      searchText: "0204"
+    )
+
+    #expect(sections.connectedDevices.isEmpty)
+    #expect(sections.supportedDevices.map(\.id) == ["supported-keyboard"])
+  }
 }
 
 private final class FakeHardwareController: NativeRazerHardwareControlling {
